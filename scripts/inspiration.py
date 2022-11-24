@@ -12,7 +12,7 @@ from modules import shared
 from modules import script_callbacks
 import modules.generation_parameters_copypaste
 
-inspiration_dir = "/content/drive/MyDrive/AI/Automatic1111/Inputs/inspiration"
+inspiration_dir = "/content/drive/MyDrive/AI/Automatic1111/Inputs/Inspiration"
 inspiration_system_path = os.path.join(inspiration_dir, "system")
 
 
