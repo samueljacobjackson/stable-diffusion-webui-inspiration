@@ -12,7 +12,7 @@ from modules import shared
 from modules import script_callbacks
 import modules.generation_parameters_copypaste
 
-inspiration_dir = os.path.join(scripts.basedir(), "inspiration")
+inspiration_dir = "/content/drive/MyDrive/AI/Automatic1111/Inputs/inspiration"
 inspiration_system_path = os.path.join(inspiration_dir, "system")
 
 
@@ -26,9 +26,6 @@ class Script(scripts.Script):
     def ui(self, is_img2img):
         files = gr.Files(label="Artist or styles name list. '.txt' files with one name per line")
         prompt_placeholder = gr.Textbox("{inspiration}", label="Prompt Placeholder, which can be used at the top of prompt input")
-        inspiration_dir_setting = gr.Textbox("{inspiration_dir}", label="Path in which to search for inpiration files")
-        if os.path.extist(inspiration_dir_setting):
-            inspiration_dir = inspiration_dir_setting 
         return [prompt_placeholder, files]
 
     def run(self, p, prompt_placeholder, files):
