@@ -26,6 +26,9 @@ class Script(scripts.Script):
     def ui(self, is_img2img):
         files = gr.Files(label="Artist or styles name list. '.txt' files with one name per line")
         prompt_placeholder = gr.Textbox("{inspiration}", label="Prompt Placeholder, which can be used at the top of prompt input")
+        inspiration_dir_setting = gr.Textbox("{inspiration_dir}", label="Path in which to search for inpiration files")
+        if os.path.extist(inspiration_dir_setting):
+            inspiration_dir = inspiration_dir_setting 
         return [prompt_placeholder, files]
 
     def run(self, p, prompt_placeholder, files):
@@ -280,7 +283,6 @@ def on_ui_settings():
     shared.opts.add_option("inspiration_max_samples", shared.OptionInfo(4, "Maximum number of samples, used to determine which folders to skip when continue running the create script", gr.Slider, {"minimum": 1, "maximum": 20, "step": 1}, section=section))
     shared.opts.add_option("inspiration_rows_num", shared.OptionInfo(4, "Number of rows on the page",  gr.Slider, {"minimum": 4, "maximum": 16, "step": 1}, section=section))
     shared.opts.add_option("inspiration_cols_num", shared.OptionInfo(6, "Minimum number of pages per load", gr.Slider, {"minimum": 4, "maximum": 16, "step": 1}, section=section))
-
 
 script_callbacks.on_ui_settings(on_ui_settings)
 script_callbacks.on_ui_tabs(on_ui_tabs)
